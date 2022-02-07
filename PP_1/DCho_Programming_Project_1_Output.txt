@@ -1,0 +1,45 @@
+Breast Cancer Dataset
+Accuracy for Each Fold
+Fold 1 : 52.68%
+Fold 2 : 60.71%
+Fold 3 : 50.0%
+Fold 4 : 75.0%
+Fold 5 : 77.48%
+Accuracy: 63.17%
+Car Evaluation
+Accuracy for Each Fold
+Fold 1 : 94.22%
+Fold 2 : 79.42%
+Fold 3 : 66.67%
+Fold 4 : 65.22%
+Fold 5 : 60.51%
+Accuracy: 73.21%
+Congressional Vote
+Accuracy for Each Fold
+Fold 1 : 60.0%
+Fold 2 : 61.43%
+Fold 3 : 67.14%
+Fold 4 : 57.97%
+Fold 5 : 60.87%
+Accuracy: 61.48%
+Abalone
+Fold 1 : 12.56%
+Fold 2 : 12.11%
+Fold 3 : 22.16%
+Fold 4 : 10.63%
+Fold 5 : 15.87%
+Accuracy: 14.67%
+Computer Hardware
+Fold 1 : 5.88%
+Fold 2 : 17.65%
+Fold 3 : 18.18%
+Fold 4 : 18.18%
+Fold 5 : 30.3%
+Accuracy: 18.04%
+Forest Fires
+Fold 1 : 0.0%
+Fold 2 : 2.41%
+Fold 3 : 9.64%
+Fold 4 : 24.1%
+Fold 5 : 29.27%
+Accuracy: 13.08%
