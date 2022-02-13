@@ -1,24 +1,12 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 import numpy as np # linear algebra
 import os
 import glob
 
-
-# In[2]:
-
-
 path = os.getcwd()
 all_files = glob.glob(path + "/dataset/*.data")
 filesnames = os.listdir('dataset/')
 
-
-# In[3]:
 
 
 dataset_header = [
@@ -38,9 +26,6 @@ dataset_header = [
 
 # ## Loading Data
 
-# In[4]:
-
-
 # Load Data
 # 1. It loads dataset from the folder. 
 # 2. It checks whether the original data already has header or not. 
@@ -59,10 +44,6 @@ def open_csv_dataset(dataset_keyword, column_header):
 
 
 # ## Handling Missing Values
-
-# In[5]:
-
-
 # Handling Missing Values
 # 1. It replaces "?" values to NaN value in the dataframe.
 # 2. If there is no null values in the dataframe, it returns dataframe
@@ -82,10 +63,6 @@ def handling_missing_values(df):
 
 
 # ## Handling Categorical Data
-
-# In[6]:
-
-
 # Unique value in columns
 # 1. It categorizes all columns in the dataset. 
 
@@ -93,19 +70,10 @@ def view_unique_value_in_columns(df):
     for i in df.columns.values:
         print(categorize_dataset(df, i))
 
-
-# In[7]:
-
-
 # Unique value in single columns
 # 1. It categorizes single columns in the dataset. 
-
 def view_unique_value_in_single_column(df, columns):
     print(categorize_dataset(df, columns))
-
-
-# In[8]:
-
 
 # Categorize Dataset
 # 1. To categroize dataset, it uses unique function.
@@ -120,20 +88,12 @@ def categorize_dataset(df, columns):
     return {columns: dicts}
 
 
-# In[9]:
-
-
 # Replace to numeric single/multiple columns in the dataset
 # 1. Based on categorize dataset function, it replaces string value to numeric values for single/multiple columns
-
 def replacing_string_to_numeric_multiple_columns(df, string_columns ):
     for i in string_columns:
         df = df.replace(categorize_dataset(df,i))
     return df
-
-
-# In[10]:
-
 
 # Replace to numeric all columns in the dataset
 # 1. Based on categorize dataset function, it replaces string value to numeric values for all columns.
@@ -146,9 +106,6 @@ def replacing_string_to_numeric_all_columns(df):
 
 # ## Log Transform
 
-# In[11]:
-
-
 # Log Transform
 # 1. This function is used to apply for Forest Fires data. 
 # 2. Based on note, it shows the output area is very skewed toward 0.0. The authors recommend a log transform.
@@ -159,9 +116,6 @@ def log_transform(x):
 
 
 # ## Discretization
-
-# In[12]:
-
 
 # Discretization
 # This function is used to transform real-valued data into a series of discretized values
@@ -197,9 +151,6 @@ def discretization(df, n, method, columns):
 
 # ## Standardization
 
-# In[13]:
-
-
 # Split dataset
 # 1. It splits the dataset into two: training set and test set.
 # 2. Training set has 80% of original dataset. 
@@ -212,19 +163,12 @@ def split_dataset(df, train_perc):
     return (train, test)
 
 
-# In[14]:
-
-
 # Z-score standardization
 # It computes z-score by (observed value - mean of the sample) / standard deviation of the sample
 
 def z_score_standardization(df):
     z_score = (df-df.mean())/df.std()
     return z_score
-
-
-# In[15]:
-
 
 # Standardization
 # 1. It applies z-score standardization for training set and testign set. 
@@ -236,9 +180,6 @@ def Standardization(training, testing):
 
 
 # ## Cross-validation
-
-# In[16]:
-
 
 #K-fold cross validation
 # 1. Split dataset into training and testset using split_dataset function.
@@ -265,9 +206,6 @@ def cross_validation(df, percent, k):
 
 
 # ## Evaluation Metrics
-
-# In[17]:
-
 
 # Evaluation Metrics
 # It used to evaluate the efficacy of a machine learning algorithm on a dataset. 
@@ -306,10 +244,6 @@ def evaluation_metrics(y_true, y_pred, method):
         pearson = covariance / (np.std(y_true) * np.std(y_pred))
         return pearson
 
-
-# In[18]:
-
-
 # For this project, it demonstrate the evaluation metrics for classification and regression 
 # by averaging the predictions over all of the folds of the dataset.
 
@@ -318,9 +252,6 @@ def evaluation_metrics_for_classification_and_regression(prediction):
 
 
 # ## Naive Majority Predictor Algorithm for Classification
-
-# In[19]:
-
 
 # Naive Majority predictor Algorithm
 # 1. Using training valiation set from 5-fold cross-valiation, 
@@ -348,9 +279,6 @@ def majority_predictor_classification(train_val, predictor):
 
 # ## Naive Majority Predictor Algorithm for Regression
 
-# In[20]:
-
-
 # Naive Mean Regressor Algorithm
 # 1. Using training valiation set from 5-fold cross-valiation, 
 #    it rotates the fold to use training set for 4 fold, and remaining fold for test set. 
@@ -374,681 +302,219 @@ def majority_predictor_regression(train_val, predictor):
 
 
 # ## Breast Cancer Wisconsin Dataset
-
-# In[21]:
-
 print("Breast Cancer Dataset")
+#load Data
 breast_cancer_dataset = open_csv_dataset('breast-cancer', True)
 breast_cancer_dataset.head(3)
-
-
-# In[22]:
-
-
+# Handling Missing Data
 clean_breast_cancer_dataset = handling_missing_values(breast_cancer_dataset)
-
-
-# In[23]:
-
-
 clean_breast_cancer_dataset.isnull().sum().any()
-
-
-# In[24]:
-
-
 clean_breast_cancer_dataset.head()
-
-
-# In[25]:
-
-
+#Drop unnecessary columns for data
 breast_cancer_dataset_v1  = clean_breast_cancer_dataset.copy()
 breast_cancer_dataset_v1 = breast_cancer_dataset_v1.drop(['sample_code_number'], axis=1)
-
-
-# In[26]:
-
-
 breast_cancer_dataset_v1.head(3)
-
-
-# In[27]:
-
-
-#breast_cancer_dataset_v1.boxplot(figsize=(20,3))
-
-
-# In[28]:
-
-
 breast_cancer_dataset_v1.describe()
-
-
-# In[29]:
-
-
+#Split Dataset
 train_breast_cancer_dataset, test_breast_cancer_dataset = split_dataset(breast_cancer_dataset_v1, 0.8)
-
-
-# In[30]:
-
-
+#Standardization
 train_breast_cancer_zscore_dataset, test_breast_cancer_zscore_dataset  = Standardization(train_breast_cancer_dataset,
                                                                                          test_breast_cancer_dataset)
-
-
-# In[31]:
-
-
 train_breast_cancer_zscore_dataset.head(3)
-
-
-# In[32]:
-
-
 test_breast_cancer_zscore_dataset.head(3)
 
-
-# In[33]:
-
-
+#5-kold cross validation
 validated_train_breast_cancer, validated_test_breast_cancer = cross_validation(breast_cancer_dataset_v1,0.8,5)
-
-
-# In[34]:
-
-
 validated_test_breast_cancer.shape[0]
-
-
-# In[35]:
-
-
 validated_train_breast_cancer_size = []
+#checking size of 5-fold
 for i in range(0, 5):
     validated_train_breast_cancer_size.append(validated_train_breast_cancer[i].shape[0])
 validated_train_breast_cancer_size
-
-
-# In[36]:
-
-
+#Majority Predictor
 breast_cancer_accuracy = majority_predictor_classification(validated_train_breast_cancer, 'class')
-
-
-# In[37]:
-
-
 print("Accuracy: " + str(evaluation_metrics_for_classification_and_regression(breast_cancer_accuracy))+ "%")
+
 
 
 # ## Car Evaluation
 
-# In[38]:
-
 print("Car Evaluation")
+#Load data
 car_dataset = open_csv_dataset('car', True)
 car_dataset.head(3)
-
-
-# In[39]:
-
-
+#Handling Missing Values
 clean_car_dataset = handling_missing_values(car_dataset)
-
-
-# In[40]:
-
-
 clean_car_dataset.isnull().sum().any()
-
-
-# In[41]:
-
-
 clean_car_dataset.head(3)
-
-
-# In[42]:
-
-
-# view_unique_value_in_columns(clean_car_dataset)
-
-
-# In[43]:
-
-
+#Handdling Categorical values
 categorized_car_datast = replacing_string_to_numeric_all_columns(clean_car_dataset)
-
-
-# In[44]:
-
-
 car_dataset_v1  = categorized_car_datast.copy()
-car_dataset_v1.head()
-
-
-# In[45]:
-
-
-# car_dataset_v1.boxplot(figsize=(20,3))
-
-
-# In[46]:
-
-
 car_dataset_v1.describe()
-
-
-# In[47]:
-
-
+#Split Dataset 
 train_car_dataset, test_car_dataset = split_dataset(car_dataset_v1, 0.8)
-
-
-# In[48]:
-
-
+#Standardization
 train_car_zscore_dataset,test_car_zscore_dataset  = Standardization(train_car_dataset,test_car_dataset)
-
-
-# In[49]:
-
-
 train_car_zscore_dataset.head()
-
-
-# In[50]:
-
-
 test_car_zscore_dataset.head()
-
-
-# In[51]:
-
-
+#5-fold cross validation
 validated_train_car, validated_test_car = cross_validation(car_dataset_v1,0.8,5)
-
-
-# In[52]:
-
-
 validated_test_car.shape[0]
-
-
-# In[53]:
-
-
+#size of 5-fold
 validated_train_car_size = []
 for i in range(0, 5):
     validated_train_car_size.append(validated_train_car[i].shape[0])
 validated_train_car_size
-
-
-# In[54]:
-
-
+#Majority predictor
 car_accuracy = majority_predictor_classification(validated_train_car, 'class')
-
-
-# In[55]:
-
-
 print("Accuracy: " + str(evaluation_metrics_for_classification_and_regression(car_accuracy))+ "%")
 
 
 # ## Congressional Vote
-
-# In[56]:
-
 print("Congressional Vote")
+#load Data
 vote_dataset = open_csv_dataset('vote', True)
 vote_dataset.head()
-
-
-# In[57]:
-
-
 vote_dataset.isnull().sum().any()
-
-
-# In[58]:
-
-
+#Categorical Data
 categorized_vote_datast = replacing_string_to_numeric_all_columns(vote_dataset)
 categorized_vote_datast.head()
-
-
-# In[59]:
-
-
 vote_dataset_v1  = categorized_vote_datast.copy()
-
-
-# In[60]:
-
-
-# vote_dataset_v1.boxplot(figsize=(20,3))
-
-
-# In[61]:
-
-
 vote_dataset_v1.describe()
-
-
-# In[62]:
-
-
+#Split Dataset
 train_vote_dataset, test_vote_dataset = split_dataset(vote_dataset_v1, 0.8)
-
-
-# In[63]:
-
-
+#Standardization
 train_vote_zscore_dataset, test_vote_zscore_dataset  = Standardization(train_vote_dataset,test_vote_dataset)
-
-
-# In[64]:
-
-
 train_vote_zscore_dataset.head()
-
-
-# In[65]:
-
-
 test_vote_zscore_dataset.head()
-
-
-# In[66]:
-
-
+#5-fold cross validation
 validated_train_vote, validated_test_vote = cross_validation(vote_dataset_v1,0.8,5)
-
-
-# In[67]:
-
-
 validated_test_vote.shape[0]
-
-
-# In[68]:
-
-
+#Size of 5-fold
 validated_train_vote_size = []
 for i in range(0, 5):
     validated_train_vote_size.append(validated_train_vote[i].shape[0])
 validated_train_vote_size
-
-
-# In[69]:
-
-
+#Majority predictor
 vote_accuracy = majority_predictor_classification(validated_train_vote, 'class')
-
-
-# In[70]:
-
-
 print("Accuracy: " + str(evaluation_metrics_for_classification_and_regression(vote_accuracy))+ "%")
 
 
 # ## Abalone
 
-# In[71]:
-
 print("Abalone")
+#Load Data
 abalone_dataset = open_csv_dataset('abalone', True)
 abalone_dataset.head(3)
-
-
-# In[72]:
-
-
 abalone_dataset.isnull().sum().any()
-
-
-# In[73]:
-
-
+#Categorical Data
 categorized_abalone_datast = replacing_string_to_numeric_multiple_columns(abalone_dataset, ['sex'])
-
-
-# In[74]:
-
-
 abalone_dataset_v1  = categorized_abalone_datast.copy()
-
-
-# In[75]:
-
-
 abalone_dataset_v1.head()
-
-
-# In[76]:
-
-
 abalone_discretize_dataset = abalone_dataset_v1.copy()
-
-
-# In[77]:
-
-
+#Discretization
 abalone_discretize_dataset = discretization(abalone_discretize_dataset, 5, 'equal_frequency',
                                            ['length', 'diameter', 'height', 'whole_height',
                                             'shucked_height', 'viscera_weight', 'shell_weight', 'rings'])
-
-
-# In[78]:
-
-
 abalone_dataset_v2 =  abalone_discretize_dataset.copy()
-abalone_dataset_v2.tail(5)
-
-
-# In[79]:
-
-
-# abalone_dataset_v2.boxplot(figsize=(20,3))
-
-
-# In[80]:
-
-
 abalone_dataset_v2.describe()
-
-
-# In[81]:
-
-
+#Split Dataset
 train_abalone_dataset, test_abalone_dataset = split_dataset(abalone_dataset_v2, 0.8)
-
-
-# In[82]:
-
-
+#Standardization
 train_abalone_zscore_dataset,test_abalone_zscore_dataset  = Standardization(train_abalone_dataset,
                                                                              test_abalone_dataset)
-
-
-# In[83]:
-
-
 train_abalone_zscore_dataset.head()
-
-
-# In[84]:
-
-
 test_abalone_zscore_dataset.head()
-
-
-# In[85]:
-
-
+#5-fold cross validation
 validated_train_abalone, validated_test_abalone = cross_validation(abalone_dataset_v2,0.8,5)
-
-
-# In[86]:
-
-
 validated_test_abalone.shape[0]
-
-
-# In[87]:
-
-
+#Size of 5-fold
 validated_train_abalone_size = []
 for i in range(0, 5):
     validated_train_abalone_size.append(validated_train_abalone[i].shape[0])
 validated_train_abalone_size
-
-
-# In[88]:
-
-
+#Majority Predictor for regression
 abalone_accuracy = majority_predictor_regression(validated_train_abalone, 'rings')
-
-
-# In[89]:
-
-
 print("Accuracy: " + str(evaluation_metrics_for_classification_and_regression(abalone_accuracy))+ "%")
 
 
 # ## Computer Hardware
 
-# In[90]:
-
 print("Computer Hardware")
+#Load Data
 computer_dataset = open_csv_dataset('machine', True)
 computer_dataset.head()
-
-
-# In[91]:
-
-
 computer_dataset.isnull().sum().any()
-
-
-# In[92]:
-
-
+#Drop unnecessary column
 computer_ERP  = computer_dataset['ERP']
 computer_dataset = computer_dataset.drop(['vendor', 'model', 'ERP'], axis = 1)
-
-
-# In[93]:
-
-
 computer_dataset_v1  = computer_dataset.copy()
 computer_dataset_v1.head()
-
-
-# In[94]:
-
-
 computer_discretize_dataset = computer_dataset_v1.copy()
-
-
-# In[95]:
-
-
+#Discretization
 computer_discretize_dataset = discretization(computer_discretize_dataset, 
                                              5, 
                                              'equal_frequency', 
                                              ['myct','mmin', 'mmax', 'cach', 'chmin', 'chmax', 'PRP'])
-
-
-# In[96]:
-
-
 computer_discretize_dataset.head()
-
-
-# In[97]:
-
-
 computer_dataset_v2 =  computer_discretize_dataset.copy()
-
-
-# In[98]:
-
-
 computer_dataset_v2.describe()
-
-
-# In[99]:
-
-
+#Split dataset
 train_computer_dataset, test_computer_dataset = split_dataset(computer_dataset_v2, 0.8)
-
-
-# In[100]:
-
-
+#Standardization
 train_computer_zscore_dataset, test_computer_zscore_dataset  = Standardization(train_computer_dataset,
                                                                                test_computer_dataset)
-
-
-# In[101]:
-
-
 train_computer_zscore_dataset.head()
-
-
-# In[102]:
-
-
 test_computer_zscore_dataset.head()
-
-
-# In[103]:
-
-
+#5-fold cross validation
 validated_train_computer, validated_test_computer = cross_validation(computer_dataset_v2,0.8,5)
-
-
-# In[104]:
-
-
 validated_test_computer.shape[0]
-
-
-# In[105]:
-
-
+#size of 5-fold
 validated_train_computer_size = []
 for i in range(0, 5):
     validated_train_computer_size.append(validated_train_computer[i].shape[0])
 validated_train_computer_size
-
-
-# In[106]:
-
-
+#Majority Predictor for Regression
 computer_accuracy =majority_predictor_regression(validated_train_computer, 'PRP')
-
-
-# In[107]:
-
-
 print("Accuracy: " + str(evaluation_metrics_for_classification_and_regression(computer_accuracy))+ "%")
 
 
 # ## Forest Fires
-
-# In[108]:
-
 print("Forest Fires")
+#Load Data
 forest_dataset = open_csv_dataset('forest', False)
 forest_dataset.head()
-
-
-# In[109]:
-
-
 forest_dataset.isnull().sum().any()
-
-
-# In[110]:
-
-
+#Categorical values
 categorized_forest_dataset = replacing_string_to_numeric_multiple_columns(forest_dataset,['month', 'day'])
 categorized_forest_dataset.head()
-
-
-# In[111]:
-
-
 forest_dataset_v1  = categorized_forest_dataset.copy()
+#Log Transform
 forest_dataset_v1['area'] = log_transform(forest_dataset_v1['area'])
 forest_dataset_v1.head()
-
-
-# In[112]:
-
-
 forest_discretize_dataset = forest_dataset_v1.copy()
-
-
-# In[113]:
-
-
+#Discretization
 forest_discretize_dataset = discretization(forest_discretize_dataset, 
                                            5, 
                                            'equal_frequency', 
                                            ['FFMC', 'DMC', 'DC', 'ISI','temp','RH', 'wind', 'rain', 'area'])
-
-
-# In[114]:
-
-
 forest_dataset_v2 =  forest_discretize_dataset.copy()
-
-
-# In[115]:
-
-
 forest_dataset_v2.describe()
-
-
-# In[116]:
-
-
+#SPlit Dataset
 train_forest_dataset, test_forest_dataset = split_dataset(forest_dataset_v2, 0.8)
-
-
-# In[117]:
-
-
+#Standardization
 train_forest_zscore_dataset, test_forest_zscore_dataset  = Standardization(train_forest_dataset,test_forest_dataset)
-
-
-# In[118]:
-
-
 train_forest_zscore_dataset.head()
-
-
-# In[119]:
-
-
 test_forest_zscore_dataset.head()
-
-
-# In[120]:
-
-
+#5-fold cross validation
 validated_train_forest, validated_test_forest = cross_validation(forest_dataset_v2,0.8,5)
-
-
-# In[121]:
-
-
 validated_test_forest.shape[0]
-
-
-# In[122]:
-
-
+#Size of 5-fold
 validated_train_forest_size = []
 for i in range(0, 5):
     validated_train_forest_size.append(validated_train_forest[i].shape[0])
 validated_train_forest_size
-
-
-# In[123]:
-
-
+#Majority Predictor for regression
 forest_accuracy = majority_predictor_regression(validated_train_forest, 'area')
-
-
-# In[124]:
-
-
 print("Accuracy: " + str(evaluation_metrics_for_classification_and_regression(forest_accuracy))+ "%")
 
