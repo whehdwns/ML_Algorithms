@@ -1,0 +1,30 @@
+-------Breast Cancer-------
+Breast Cancer Score Unpruned: [80.36, 93.69, 77.48, 93.69, 93.69]/ Avg Score: 87.782
+Breast Cancer Accuracy Score pruned: [73.21, 90.09, 69.37, 87.39, 89.19]/ Avg Score: 81.85
+-------Car-------
+Car Accuracy Score Unpruned: [83.03, 71.74, 79.35, 70.65, 69.2]/ Avg Score: 74.794
+Car Accuracy Score pruned: [85.2, 79.35, 66.67, 65.58, 60.14]/ Avg Score: 71.388
+-------Congressional Vote-------
+vote Accuracy Score Unpruned: [97.14, 92.86, 94.29, 92.86, 94.12]/ Avg Score: 94.254
+vote Accuracy Score pruned: [97.14, 92.86, 94.29, 95.71, 92.65]/ Avg Score: 94.53
+-------Abalone-------
+Frequency Size for Cart: 2
+Frequency Size for Cart Early Stopping: 2
+Minimum Leaf Size for Cart Early Stopping: 6
+Threshold for Cart Early Stopping: 0.2
+Abalone MSE Unpruned: [10.86, 6.04, 4.84, 4.45, 35.08]/ Avg Score: 12.25
+Abalone MSE Pruned: [11.78, 6.15, 5.09, 4.54, 35.09]/ Avg Score: 12.53
+-------Computer Hardware-------
+Frequency Size for Cart: 3
+Frequency Size for Cart Early Stopping: 4
+Minimum Leaf Size for Cart Early Stopping: 2
+Threshold for Cart Early Stopping: 0.2
+Computer MSE Unpruned: [0.8, 0.16, 0.23, 0.48, 5.35]/ Avg Score: 1.4
+Computer MSE Pruned: [1.16, 0.21, 0.27, 0.75, 5.09]/ Avg Score: 1.5
+-------Forest Fires-------
+Frequency Size for Cart: 9
+Frequency Size for Cart Early Stopping: 2
+Minimum Leaf Size for Cart Early Stopping: 7
+Threshold for Cart Early Stopping: 0.8
+Forest MSE Unpruned: [3.68, 4.08, 2.83, 1.32, 8.0]/ Avg Score: 3.98
+Forest MSE Pruned: [2.26, 2.72, 1.15, 0.95, 8.37]/ Avg Score: 3.09
