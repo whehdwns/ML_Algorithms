@@ -1,0 +1,93 @@
+----------- Breast Cancer -----------
+Logistic Regesssion Binary Classes
+Best Max Iteration 50
+best_learning_rate 0.1
+LogR binary score: [77.68, 82.88, 81.08, 61.26, 84.68]/ LogR binary avg score: 77.52
+Feedforward with Backpropagation Classification
+Best Max Iteration 20
+best_learning_rate 0.1
+best_hidden_node 6
+FFBP score: [83.04, 98.2, 94.59, 97.3, 97.3]/ FFBP avg score: 94.09
+Autoencoder
+Best Max Iteration 10
+best_learning_rate 0.1
+best_encoding_node 3
+best_hidden_node 5
+Autoencoder score: [85.71, 98.2, 94.59, 96.4, 98.2]/ Autoencoder avg score: 94.62
+----------- Car -----------
+Logistic Regesssion Multi Classes
+Best Max Iteration 0.01
+best_learning_rate 10
+LogR multi score: [94.22, 79.35, 66.67, 65.58, 60.14]/ LogR multi avg score: 73.19
+Feedforward with Backpropagation Classification
+Best Max Iteration 10
+best_learning_rate 0.1
+best_hidden_node 7
+FFBP score: [86.28, 86.59, 83.7, 86.96, 66.67]/ FFBP avg score: 82.04
+Autoencoder
+Best Max Iteration 10
+best_learning_rate 0.001
+best_encoding_node 2
+best_hidden_node 5
+Autoencoder score: [94.22, 79.35, 66.67, 65.58, 60.14]/ Autoencoder avg score: 73.19
+----------- Congressional Vote -----------
+Logistic Regesssion Binary Classes
+Best Max Iteration 20
+best_learning_rate 0.1
+LogR binary score: [98.57, 92.86, 95.71, 94.29, 97.06]/ LogR binary avg score: 95.7
+Feedforward with Backpropagation Classification
+Best Max Iteration 20
+best_learning_rate 0.1
+best_hidden_node 6
+FFBP score: [98.57, 94.29, 95.71, 94.29, 98.53]/ FFBP avg score: 96.28
+Autoencoder
+Best Max Iteration 20
+best_learning_rate 0.1
+best_encoding_node 2
+best_hidden_node 7
+Autoencoder score: [97.14, 94.29, 94.29, 94.29, 98.53]/ Autoencoder avg score: 95.71
+----------- Abalone -----------
+Linear Regression
+best_learning_rate 0.05
+LinR binary score: [19.01, 4.77, 10.1, 15.74, 100.1]/ LinR binary avg score: 29.94
+Feedforward with Backpropagation Regression
+Best Max Iteration 10
+best_learning_rate 0.001
+best_hidden_node 5
+FFBP score: [128.02, 82.15, 62.02, 40.08, 21.48]/ FFBP avg score: 66.75
+Autoencoder
+Best Max Iteration 20
+best_learning_rate 0.001
+best_encoding_node 2
+best_hidden_node 5
+Autoencoder score: [127.95, 82.15, 62.02, 40.08, 21.48]/ Autoencoder avg score: 66.74
+----------- Computer Hardware -----------
+Linear Regression
+best_learning_rate 0.5
+LinR binary score: [0.12, 0.47, 0.49, 0.87, 10.96]/ LinR binary avg score: 2.58
+Feedforward with Backpropagation Regression
+Best Max Iteration 20
+best_learning_rate 0.001
+best_hidden_node 6
+FFBP score: [2.78, 0.47, 0.47, 0.3, 8.6]/ FFBP avg score: 2.52
+Autoencoder
+Best Max Iteration 20
+best_learning_rate 0.001
+best_encoding_node 2
+best_hidden_node 5
+Autoencoder score: [2.72, 0.43, 0.43, 0.28, 8.56]/ Autoencoder avg score: 2.48
+----------- Forest Fires -----------
+Linear Regression
+best_learning_rate 0.05
+LinR binary score: [0.19, 0.26, 0.14, 1.74, 10.5]/ LinR binary avg score: 2.56
+Feedforward with Backpropagation Regression
+Best Max Iteration 10
+best_learning_rate 0.001
+best_hidden_node 5
+FFBP score: [3.05, 3.06, 1.88, 0.32, 7.48]/ FFBP avg score: 3.16
+Autoencoder
+Best Max Iteration 10
+best_learning_rate 0.001
+best_encoding_node 2
+best_hidden_node 5
+Autoencoder score: [2.98, 3.03, 1.83, 0.33, 7.48]/ Autoencoder avg score: 3.13
