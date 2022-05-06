@@ -1,6 +1,9 @@
 # Intro_to_Machine_Learning
 JHU Introduction to Machine Learning, 605.649 Spring 2022
 
+Implemented Machine Learning Algorithms from Scratch
+
+
 ## PP_1: Naive Majority Predictor Algorithm for Classification and Regression
 - Set up, Handling Missing Values, Handling Categorical Data, Discretization, Standardization, Cross-validation, Evaluation Metrics
 - Naive Majority Predictor
