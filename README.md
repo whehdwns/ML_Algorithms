@@ -1,5 +1,5 @@
-# Intro_to_Machine_Learning
-JHU Introduction to Machine Learning, 605.649 Spring 2022
+# ML Algorithms
+(JHU Introduction to Machine Learning, 605.649 Spring 2022)
 
 Implemented Machine Learning Algorithms from Scratch
 
